@@ -3,7 +3,7 @@ YMPE = 73200
 MIE = 63200
 
 def net_pay_calculator_on(gross_salary, YMPE, MIE):
-    def provincial_taxes(gross_salary):
+    def provincial_taxes(gross_salary): 
         if gross_salary <= 51446:
             provtax = gross_salary * 0.0505
         elif gross_salary <= 102894:
