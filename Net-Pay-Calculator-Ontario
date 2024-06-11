@@ -1,0 +1,55 @@
+gross_salary = 170000
+YMPE = 73200
+MIE = 63200
+
+def net_pay_calculator_on(gross_salary, YMPE, MIE):
+    def provincial_taxes(gross_salary):
+        if gross_salary <= 51446:
+            provtax = gross_salary * 0.0505
+        elif gross_salary <= 102894:
+            provtax = 2598.02 + (gross_salary - 51446) * 0.0915
+        elif gross_salary <= 150000:
+            provtax = 2598.02 + 4707.49 + (gross_salary - 102894) * 0.1116
+        elif gross_salary <= 220000:
+            provtax = 2598.02 + 4707.49 + 5257.03 + (gross_salary - 150000) * 0.1216
+        else:
+            provtax = 2598.02 + 4707.49 + 5257.03 + 8512 + (gross_salary - 220000) * 0.1316
+        return provtax
+
+    def federal_taxes(gross_salary):
+        if gross_salary <= 55867:
+            fedtax = gross_salary * 0.15
+        elif gross_salary <= 111733:
+            fedtax = 8380.05 + (gross_salary - 55867) * 0.205
+        elif gross_salary <= 173205:
+            fedtax = 8380.05 + 11452.53 + (gross_salary - 111733) * 0.26
+        elif gross_salary <= 246752:
+            fedtax = 8380.05 + 11452.53 + 15982.72 + (gross_salary - 173205) * 0.29
+        else:
+            fedtax = 8380.05 + 11452.53 + 15982.72 + 21328.63 + (gross_salary - 246752) * 0.33
+        return fedtax
+
+    def cpp_cont(gross_salary, YMPE):
+        if gross_salary <= YMPE:
+            cpp = gross_salary * 0.0595
+        else:
+            cpp = YMPE * 0.0595
+        return cpp
+
+    def ei_cont(gross_salary, MIE):
+        if gross_salary <= MIE:
+            ei = gross_salary * 0.0166
+        else:
+            ei = MIE * 0.0166
+        return ei
+
+    provtax = provincial_taxes(gross_salary)
+    fedtax = federal_taxes(gross_salary)
+    cpp = cpp_cont(gross_salary, YMPE)
+    ei = ei_cont(gross_salary, MIE)
+
+    net_pay = gross_salary - provtax - fedtax - cpp - ei
+    return net_pay
+
+net_pay = net_pay_calculator_on(gross_salary, YMPE, MIE)
+print(net_pay)
