@@ -1,0 +1,186 @@
+valid_province_codes = ("BC", "AL", "SK", "MB", "ON", "QC", "NB", "NS", "NL", "PE")
+
+while True:
+  province = input("Enter your province's 2-letter code (BC, AL, SK, MB, ON, QC, NB, NS, NL, PE)").upper()
+  if province in valid_province_codes:
+    break
+  else:
+    print("Invalid province code. Please try again")
+
+gross_salary = input("What is your annual gross income?")
+YMPE = 73200
+MIE = 63200
+
+def net_pay_calculator_on(gross_salary, YMPE, MIE):
+    def provincial_taxes(province, gross_salary):
+      if province == 'ON':
+        if float(gross_salary) <= 12399:
+          provtax = 0
+        elif float(gross_salary) <= 51446:
+          provtax = (float(gross_salary)- 12399) * 0.0505
+        elif float(gross_salary) <= 102894:
+          provtax = 1971.87 + (float(gross_salary) - 51446) * 0.0915
+        elif float(gross_salary) <= 150000:
+          provtax = 1971.87 + 4707.49 + (float(gross_salary) - 102894) * 0.1116
+        elif float(gross_salary) <= 220000:
+          provtax = 1971.87 + 4707.49 + 5257.03 + (float(gross_salary) - 150000) * 0.1216
+        else:
+          provtax = 1971.87 + 4707.49 + 5257.03 + 8512 + (float(gross_salary)- 220000) * 0.1316
+        return provtax
+      elif province =='BC':
+        if float(gross_salary) <= 12399:
+          provtax = 0
+        elif float(gross_salary) <= 51446:
+          provtax = (float(gross_salary)- 12399) * 0.0506
+        elif float(gross_salary) <= 95875:
+          provtax = 2425.61 + (float(gross_salary) - 47937) * 0.077
+        elif float(gross_salary) <= 110076:
+          provtax = 2425.61 + 3691.23 + (float(gross_salary) - 95875) * 0.105
+        elif float(gross_salary) <= 133664:
+          provtax = 2425.61 + 3691.23 + 1491.11 + (float(gross_salary) - 110076) * 0.1229
+        elif float(gross_salary) <= 181232:
+          provtax = 2425.61 + 3691.23 + 1491.11 + 2898.97 + (float(gross_salary) - 133664) * 0.147
+        elif float(gross_salary) <= 252752:
+          provtax = 2425.61 + 3691.23 + 1491.11 + 2898.97 + 6992.5 + (float(gross_salary) - 181232) * 0.168
+        else:
+          provtax = 2425.61 + 3691.23 + 1491.11 + 2898.97 + 6992.5 + 12015.36 + (float(gross_salary) - 220000) * 0.205
+        return provtax
+      elif province =='AL':
+        if float(gross_salary) <= 148269:
+          provtax = float(gross_salary) * 0.1
+        elif float(gross_salary) <= 177922:
+          provtax = 14826.9 + (float(gross_salary) - 148269) * 0.12
+        elif float(gross_salary) <= 237230:
+          provtax = 14826.9 + 3558.36 + (float(gross_salary) - 177922) * 0.13
+        elif float(gross_salary) <= 355845:
+          provtax = 14826.9 + 3558.36 + 7710.04 + (float(gross_salary) - 237230) * 0.14
+        else:
+          provtax = 14826.9 + 3558.36 + 7710.04 + 16606.1 + (float(gross_salary) - 355845) * 0.15
+        return provtax
+      elif province =='SK':
+        if float(gross_salary) <= 52057:
+          provtax = float(gross_salary) * 0.105
+        elif float(gross_salary) <= 148734:
+          provtax = 5465.99 + (float(gross_salary) - 52057) * 0.125
+        else:
+          provtax = 5465.99 + 12084.63 + (float(gross_salary) - 148734) * 0.145
+        return provtax
+      elif province =='MB':
+        if float(gross_salary) <= 47000:
+          provtax = float(gross_salary) * 0.108
+        elif float(gross_salary) <= 100000:
+          provtax = 5076 + (float(gross_salary) - 47000) * 0.1275
+        else:
+          provtax = 5076 + 6757.5 + (float(gross_salary)- 100000) * 0.174
+        return provtax
+      elif province =='QC':
+        if float(gross_salary) <= 51870:
+          provtax = float(gross_salary) * 0.14
+        elif float(gross_salary) <= 103545:
+          provtax = 7249.2 + (float(gross_salary) - 51870) * 0.19
+        elif float(gross_salary) <= 126000:
+          provtax = 7249.2 + 9818.25 + (float(gross_salary) - 103545) * 0.24
+        else:
+          provtax = 7249.2 + 9818.25 + 5389.2 + (float(gross_salary) - 126000) * 0.2575
+        return provtax
+      elif province =='NB':
+        if float(gross_salary) <= 49958:
+          provtax = float(gross_salary) * 0.094
+        elif float(gross_salary) <= 99916:
+          provtax = 4696.05 + (float(gross_salary)- 49958) * 0.14
+        elif float(gross_salary) <= 185064:
+          provtax = 4696.05 + 6994.12 + (float(gross_salary) - 99916) * 0.16
+        else:
+          provtax = 4696.05 + 6994.12 + 13623.68 + (float(gross_salary) - 185064) * 0.195
+        return provtax
+      elif province =='NS':
+        if float(gross_salary) <= 29590:
+          provtax = float(gross_salary) * 0.0879
+        elif float(gross_salary) <= 59180:
+          provtax = 2600.96 + (float(gross_salary) - 29590) * 0.1495
+        elif float(gross_salary) <= 93000:
+          provtax = 2600.96 + 4423.71 + (float(gross_salary) - 59180) * 0.1667
+        elif float(gross_salary) <= 150000:
+          provtax = 2600.96 + 4423.71 + 5637.79 + (float(gross_salary) - 93000) * 0.175
+        else:
+          provtax = 2600.96 + 4423.71 + 5637.79 + 9975 + (float(gross_salary) - 220000) * 0.21
+        return provtax
+      elif province =='PE':
+        if float(gross_salary) <= 32656:
+          provtax = float(gross_salary) * 0.0965
+        elif float(gross_salary) <= 64313:
+          provtax = 3151.3 + (float(gross_salary) - 32656) * 0.1363
+        elif float(gross_salary) <= 105000:
+          provtax = 3151.3 + 4314.85 + (float(gross_salary) - 64313) * 0.1665
+        elif float(gross_salary) <= 140000:
+          provtax = 3151.3 + 4314.85 + 6774.39 + (float(gross_salary) - 105000) * 0.18
+        else:
+          provtax = 3151.3 + 4314.85 + 6774.39 + 6300 + (float(gross_salary) - 140000) * 0.1875
+        return provtax
+      elif province =='NL':
+        if float(gross_salary) <= 43198:
+          provtax = float(gross_salary) * 0.087
+        elif float(gross_salary) <= 86395:
+          provtax = 3758.23 + (float(gross_salary) - 43198) * 0.145
+        elif float(gross_salary) <= 154244:
+          provtax = 3758.23 + 6263.57 + (float(gross_salary) - 86395) * 0.158
+        elif float(gross_salary) <= 215943:
+          provtax = 3758.23 + 6263.57 + 10720.14 + (float(gross_salary) - 154244) * 0.178
+        elif float(gross_salary) <= 275870:
+          provtax = 3758.23 + 6263.57 + 10720.14 + 10982.42 + (float(gross_salary)- 215943) * 0.198
+        elif float(gross_salary) <= 551739:
+          provtax = 3758.23 + 6263.57 + 10720.14 + 10982.42 + 11865.55 + (float(gross_salary) - 275870) * 0.208
+        elif float(gross_salary) <= 1103478:
+          provtax = 3758.23 + 6263.57 + 10720.14 + 10982.42 + 11865.55 + 57380.75 + (float(gross_salary) - 551739) * 0.213
+        else:
+          provtax = 3758.23 + 6263.57 + 10720.14 + 10982.42 + 11865.55 + 57380.75 + 117520.41+ (float(gross_salary) - 1103478) * 0.218
+        return provtax
+      else:
+        pass
+
+    def federal_taxes(gross_salary):
+        if float(gross_salary) <= 15705:
+          fedtax = 0
+        elif float(gross_salary) <= 55867:
+          fedtax = (float(gross_salary)-15705) * 0.15
+        elif float(gross_salary) <= 111733:
+          fedtax = 6024.3 + (float(gross_salary) - 55867) * 0.205
+        elif float(gross_salary) <= 173205:
+          fedtax = 6024.3 + 11452.53 + (float(gross_salary) - 111733) * 0.26
+        elif float(gross_salary) <= 246752:
+          fedtax = 6024.3 + 11452.53 + 15982.72 + (float(gross_salary) - 173205) * 0.29
+        else:
+          fedtax = 6024.3 + 11452.53 + 15982.72 + 21328.63 + (float(gross_salary) - 246752) * 0.33
+        return fedtax
+
+    def cpp_cont(gross_salary, YMPE):
+        if float(gross_salary) <= YMPE:
+            cpp = float(gross_salary) * 0.0595
+        else:
+            cpp = YMPE * 0.0595
+        return cpp
+
+    def ei_cont(gross_salary, MIE):
+        if float(gross_salary) <= MIE:
+            ei = float(gross_salary) * 0.0166
+        else:
+            ei = MIE * 0.0166
+        return ei
+
+    provtax = provincial_taxes(province, gross_salary)
+    fedtax = federal_taxes(gross_salary)
+    cpp = cpp_cont(gross_salary, YMPE)
+    ei = ei_cont(gross_salary, MIE)
+    print('Provincial Tax:', round(float(provtax),2))
+    print('Federal Tax:', round(float(fedtax),2))
+    print('CPP Contributions:', round(float(cpp),2))
+    print('EI Contributions:', round(float(ei),2))
+
+    net_pay = float(gross_salary) - float(provtax) - float(fedtax) - float(cpp) - float(ei)
+    return net_pay
+
+net_pay = net_pay_calculator_on(gross_salary, YMPE, MIE)
+print('Your annual netpay will be', round(float(net_pay), 2), '\nPlease be aware this does not consider any tax deductible contributions such as RRSPs or FHSA')
+
+net_paycheque = net_pay/26
+print('Your net paycheck will be', round(float(net_paycheque), 2))
